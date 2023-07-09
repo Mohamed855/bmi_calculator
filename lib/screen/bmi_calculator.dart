@@ -335,13 +335,13 @@ bmiResultShowDialog(weight, height, isMale, ctx) {
       state = 'Obesity';
     }
   }
-  if (height >= 150.0) {
-    if (isMale) {
-      healthyWeight = (height - 100).round();
-    } else {
-      healthyWeight = (height - 90).round();
-    }
+
+  if (isMale) {
+    healthyWeight = (height - 100).round();
+  } else {
+    healthyWeight = (height - 90).round();
   }
+
   showDialog<void>(
     context: ctx,
     builder: (BuildContext context) {
@@ -349,7 +349,7 @@ bmiResultShowDialog(weight, height, isMale, ctx) {
         title: Text(state),
         content: Text(
           '''Your BMI = ${bmi.round()}
-${state != 'Healthy Weight' ? 'Your healthy weight is $healthyWeight Kg' : ''}''',
+${state != 'Healthy Weight' && height >= 140.0 ? 'Your healthy weight is $healthyWeight Kg' : ''}''',
           style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w500,
