@@ -1,3 +1,8 @@
+.gitignore
+linux/
+macos/
+web/
+windows/
 # Miscellaneous
 *.class
 *.log
